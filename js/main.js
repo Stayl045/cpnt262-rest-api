@@ -1,3 +1,7 @@
+const randomIndex = (length) => {
+  return Math.floor(Math.random() * length);
+};
+
 const fetchData = async function (url) {
   try {
     const response = await fetch(url);
@@ -5,22 +9,13 @@ const fetchData = async function (url) {
       throw new Error(response.statusText);
     }
     const data = await response.json();
+    const characters = data.data[randomIndex(data.data.length)];
 
-    console.log(data.data[8].films);
-
-    const filmsOutput = `<ul><li>${data.data[8].films.join(
-      "</li><li>"
-    )}</li></ul>`;
-
+    console.log(characters);
     const output = `
-        <h1>${data.data[8].name}</h1>
-        <img src="${data.data[8].imageUrl}" alt="Image of ${data.data[8].name}">
-        <p>
-          <a href="${data.data[8].url}">Raw Data</a>
-        </p>
-        <p>Films</p>
-        ${filmsOutput}
-      `;
+    <h1>${characters.name}</h1>
+    
+    `;
 
     document.querySelector(".content").innerHTML = output;
   } catch (error) {
@@ -28,6 +23,6 @@ const fetchData = async function (url) {
   }
 };
 
-const endpoint = "http://api.disneyapi.dev/characters";
+const endpoint = "https://anapioficeandfire.com/api/characters/583";
 
 fetchData(endpoint);
