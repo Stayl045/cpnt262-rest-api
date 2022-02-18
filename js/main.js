@@ -9,7 +9,7 @@ const fetchData = async function (url) {
       throw new Error(response.statusText);
     }
     const data = await response.json();
-    const characters = data.data[randomIndex(data.data.length)];
+    const characters = data[randomIndex(data.length)];
 
     console.log(characters);
     const output = `
