@@ -7,28 +7,28 @@ const randomIndex = (length) => {
   return Math.floor(Math.random() * length);
 };
 
-const fetchData = async function () {
+const fetchData = async () => {
   try {
-    const response = await fetch("https://digimon-api.vercel.app/api/digimon/");
+    const response = await fetch("https://digimon-api.vercel.app/api/digimon");
     if (!response.ok) {
       throw new Error(response.statusText);
     }
     const data = await response.json();
-    // const characters = data[randomIndex(data.length)];
 
+    console.log(data[randomIndex(data.length)]);
     // console.log(characters);
     const html = data
       .map(
-        (el) =>
-          `
+        (el) => `
     <h1>${el.name}</h1>
-    <img src= "${el.name}">
+    <img src= "${el.img}">
+    <p>${el.level}</p>
     
     `
       )
       .join("");
 
-    content.insertAdjacentElement("afterbegin", html);
+    content.insertAdjacentHTML("afterbegin", html);
 
     // document.querySelector(".content").innerHTML = output;
   } catch (error) {
@@ -40,7 +40,19 @@ const fetchData = async function () {
 
 // fetchData(endpoint);
 
-btn.addEventEventListener("click", function (e) {
-  e.preventDefault();
-  fetchData();
-});
+// btn.addEventEventListener("click", function (e) {
+//   e.preventDefault();
+//   fetchData();
+// });
+
+// btn.addEventListener("click", fetchData);
+
+// fetchData();
+
+const submitHandler = (event) => {
+  event.preventDefault();
+
+  btn.addEventListener("click", submitHandler);
+};
+
+fetchData();
