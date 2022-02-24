@@ -19,10 +19,27 @@ body {
 }
 
 h1 {
-  padding-top: 5rem;
+  padding-top: 3rem;
   font-size: 50px;
 }
 
 h2 {
+  margin-top: 10px;
   font-size: 25px;
+}
+
+h3 {
+  font-size: 35px;
+  color: blueviolet;
+}
+
+.title {
+  font-size: 50px;
+  color: blueviolet;
+}
+
+img {
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 7px;
 }

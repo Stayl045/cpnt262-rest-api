@@ -18,6 +18,7 @@ const fetchData = async function (url) {
     const output = `
     <h1>${characters.name}</h1>
     <a href="#"><img src= "${characters.img}"></a>
+    <h3>Level of Digimon</h3>
     <h2>${characters.level}</h2>
 
     `;
